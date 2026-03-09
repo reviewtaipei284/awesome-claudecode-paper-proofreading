@@ -84,13 +84,12 @@ In the Claude Code session, reference the prompt by its **absolute path**, then 
 
 ### Step 3 — Run the content proofreader
 
-Provide both the `.tex` source files **and the compiled PDF**:
+Provide the root `.tex` file and the compiled PDF:
 
 ```
 @~/awesome-claudecode-paper-proofreading/prompts/02_paper_proofreading.md
 
-@sections/introduction.tex @sections/methodology.tex @sections/experiments.tex
-@paper.pdf
+@main.tex @paper.pdf
 ```
 
 > **Why the PDF?**
