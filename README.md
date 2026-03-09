@@ -36,7 +36,7 @@ Two prompts for proofreading LaTeX research papers with Claude Code, designed fo
 
 1. Copy the contents of the prompt file
 2. Paste into your Claude Code session
-3. Follow with: `Here is the paper: @main.tex`
+3. Follow with your files (see input recommendations below)
 
 ### Option B — Use as a `@` reference
 
@@ -47,6 +47,36 @@ In Claude Code, reference the prompt file directly:
 
 Please audit this workspace: @main.tex @shortcuts.tex
 ```
+
+---
+
+## What to Provide as Input
+
+### For `01_latex_workspace_review.md`
+
+Provide the root `.tex` file (whatever it is named) and your macro file:
+
+```
+@prompts/01_latex_workspace_review.md
+
+@main.tex @shortcuts.tex
+```
+
+### For `02_paper_proofreading.md`
+
+Provide **both** the `.tex` source files **and the compiled PDF**:
+
+```
+@prompts/02_paper_proofreading.md
+
+@sections/introduction.tex @sections/methodology.tex @sections/experiments.tex
+@paper.pdf
+```
+
+> **Why the PDF?**
+> The compiled PDF lets Claude double-check two things that are invisible in the source alone:
+> - **Figure placement** — whether figures are displaced far from their reference in the text (e.g., a figure floating to a different page or section)
+> - **PDF-level annotations** — any comments or highlights left in the PDF from a previous review round that were not resolved
 
 ### Option C — Place in `CLAUDE.md`
 

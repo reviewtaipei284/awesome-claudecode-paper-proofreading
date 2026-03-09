@@ -26,7 +26,7 @@ https://github.com/LimHyungTae/paper-writing-checklist
 Read the following files if they exist (adapt to the actual workspace structure):
 
 **Main document:**
-- `main.tex` / `paper.tex`
+- The root `.tex` file that contains `\begin{document}` (the filename varies per user — find it by looking for the file with `\documentclass` and `\begin{document}`)
 
 **Macro files (check all that exist):**
 - `shortcuts.tex`
@@ -44,9 +44,9 @@ Read the following files if they exist (adapt to the actual workspace structure)
 - `*.bib`
 - `../references/*.bib`
 
-**Figures:**
-- `figures/` (filenames actually present vs. filenames referenced in `.tex`)
-- `figures/dummy_figures/` or `paper/dummy_figures/` (placeholder figures — must all be replaced)
+**Figures and image sources (two distinct folders):**
+- `figures/` — contains the **final figures inserted into the manuscript** via `\input{}` or `\includegraphics{}`. Check that every file referenced in `.tex` exists here.
+- `pics/` — contains **raw image sources** (original photos, screenshots, SVGs, raw exports). Files here are not directly inserted into the manuscript. Do NOT flag missing `.tex` references for files in `pics/`.
 
 **Deprecated / leftover:**
 - `deprecated/` folder contents — flag anything still `\input`-ted from the main document
@@ -62,13 +62,12 @@ Read the following files if they exist (adapt to the actual workspace structure)
 | 1     | C1       | Preamble Configuration               | ✅      |
 | 2     | C2       | Package Load Order & Conflicts       | ✅      |
 | 3     | C3       | Macro Safety & Naming Consistency    | ✅      |
-| 4     | C4       | Submission-Blocker Macros            | ✅      |
-| 5     | C5       | Cross-Reference Consistency          | ✅      |
-| 6     | C6       | Label Naming Convention              | ✅      |
-| 7     | C7       | Citation & Bibliography              | ✅      |
-| 8     | C8       | Figure & Table Safety                | ✅      |
-| 9     | C9       | Hidden Human Errors                  | ✅      |
-| 10    | C10      | Academic Writing (LaTeX-Detectable)  | ✅      |
+| 4     | C4       | Cross-Reference Consistency          | ✅      |
+| 5     | C5       | Label Naming Convention              | ✅      |
+| 6     | C6       | Citation & Bibliography              | ✅      |
+| 7     | C7       | Figure & Table Safety                | ✅      |
+| 8     | C8       | Hidden Human Errors                  | ✅      |
+| 9     | C9       | Academic Writing (LaTeX-Detectable)  | ✅      |
 
 ---
 
@@ -78,7 +77,7 @@ Read the following files if they exist (adapt to the actual workspace structure)
 
 ### CHECK C1 — Preamble Configuration
 
-Verify the preamble (whether in `main.tex`, `preamble.tex`, or a shared file):
+Verify the preamble (whether in the root `.tex` file, `preamble.tex`, or a shared file):
 
 - **Duplicate packages** — same package loaded more than once across all input files
 - **Conflicting packages** — packages known to be incompatible
@@ -186,63 +185,29 @@ Look for macros like `\methodname`, `\ours`, `\method`, `\datasetname` and verif
 - Macros used in both text and math mode — check for `\text{}` wrappers where needed
 - Macros that use text-only commands (`\textbf`, `\emph`) inside math expressions
 
-**Defined but never used:**
-- List macros defined in `shortcuts.tex` but with zero occurrences in `sections/*.tex` or `main.tex`
-
 **Shared symbol conflicts:**
 - If `../references/preamble_symbols.tex` exists, check for symbol name conflicts with locally defined macros in `shortcuts.tex`
 - Duplicate `\newcommand` definitions across the shared and local files
 
----
+**Subscript consistency in math expressions:**
 
-### CHECK C4 — Submission-Blocker Macros
+Hardcoded subscript strings are a common source of inconsistency. If the same subscript label appears in multiple equations as a raw string, it should be a macro defined in `preamble_symbols.tex`.
 
-**This is the most critical check before submission.**
-
-Flag any macro that adds colored text, reviewer notes, or revision markup that is still **active** (not commented out):
-
-**Reviewer/author comment macros:**
+Flag any subscript that is written as a literal string rather than a macro:
 ```
-\newcommand{\HY}[1]{\textcolor{blue}{#1}}     ← author note — MUST be disabled
-\newcommand{\YC}[1]{{\color{blue} #1}}         ← author note — MUST be disabled
-\newcommand{\HL}[1]{{\color{orange} #1}}       ← author note — MUST be disabled
-\newcommand{\htnote}[1]{\textcolor{blue}{#1}}  ← reviewer note — MUST be disabled
+❌ _{\text{pred}}, _{\mathrm{pred}}   ← hardcoded; if used in 3+ places, define a macro
+❌ _{\text{GT}}, _{\mathrm{GT}}
+❌ _{\text{obs}}, _{\text{proj}}
+
+✅ \newcommand{\subPred}{\mathrm{pred}}   ← defined in preamble_symbols.tex
+   _{\subPred}                            ← used consistently
 ```
 
-For submission, these should be either:
-```
-\newcommand{\HY}[1]{}     ← silenced (content discarded)
-\newcommand{\HY}[1]{#1}   ← silenced (content shown, no color)
-```
-
-**Revision markup macros:**
-```
-\newcommand{\revise}[1]{\blue{#1}}    ← revision highlight — MUST be disabled
-\newcommand{\crevise}[1]{\red{#1}}   ← revision highlight — MUST be disabled
-\newcommand{\finalize}[1]{\blue{#1}} ← revision highlight — MUST be disabled
-```
-
-For submission, should be:
-```
-\newcommand{\revise}[1]{#1}
-\newcommand{\crevise}[1]{#1}
-\newcommand{\finalize}[1]{#1}
-```
-
-**Check usage:** Even if the macro definition is silenced, grep for all calls like `\HY{`, `\revise{`, `\crevise{` in all section files to confirm no colored text will appear.
-
-**`todonotes` package:**
-- If `\usepackage[colorinlistoftodos]{todonotes}` is loaded, verify all `\todo{}` calls are removed or the package is switched to `\usepackage[disable]{todonotes}`
-
-**Anonymous submission check:**
-- If this is a blind-review submission, verify:
-  - Author names and affiliations commented out
-  - Acknowledgment section commented out or replaced with placeholder
-  - Self-identifying code repository links removed or anonymized
+For each flagged subscript string, suggest the macro name and the line to add to `preamble_symbols.tex`.
 
 ---
 
-### CHECK C5 — Cross-Reference Consistency
+### CHECK C4 — Cross-Reference Consistency
 
 **Reference command consistency** — pick one style and use it everywhere:
 
@@ -252,7 +217,28 @@ For submission, should be:
 ✅ "\Cref{fig:x} shows..."       ← preferred with cleveref
 ```
 
-Check:
+**Multiple references** — when citing more than one figure, table, or equation together:
+
+```
+❌ "\Cref{fig:xx} and \Cref{fig:xy}"   ← produces "Fig. 1 and Fig. 2" (redundant label)
+✅ "\Cref{fig:xx,fig:xy}"              ← cleveref auto-produces "Figs. 1 and 2"
+✅ "Figs.~\ref{fig:xx} and~\ref{fig:xy}"  ← acceptable if not using cleveref list syntax
+```
+
+Flag any pattern where the same type label (`Fig.`, `Table`, `Eq.`) is repeated for each item in a list — it should appear only once before the group.
+
+**Subcaption references** — when referencing a subfigure `(a)`, `(b)`, etc.:
+
+```
+❌ "Fig. 1a"       ← no parentheses; ambiguous
+❌ "Fig. 1-a"      ← incorrect separator
+✅ "Fig. 1(a)"     ← correct: parentheses around the subfigure label
+✅ "\Cref{fig:x}(a)"  ← with cleveref for the parent + manual subfigure label
+```
+
+If `subcaption` or `subfig` is used, check whether `\subref{fig:x:a}` is configured to produce `(a)` and that the surrounding reference produces `Fig. 1(a)` not `Fig. 1a`.
+
+**General checks:**
 - Mixed use of `\Cref`, `\cref`, `\ref` — standardize
 - Manual `"Fig."`, `"Table"`, `"Eq."`, `"Sec."` references in text instead of `\Cref{}`
 - `\eqref{}` vs `\Cref{eq:}` — verify consistent choice
@@ -263,7 +249,7 @@ Check:
 
 ---
 
-### CHECK C6 — Label Naming Convention
+### CHECK C5 — Label Naming Convention
 
 Verify all `\label{}` values follow a consistent prefix scheme:
 
@@ -284,7 +270,7 @@ Flag:
 
 ---
 
-### CHECK C7 — Citation & Bibliography
+### CHECK C6 — Citation & Bibliography
 
 **Citation integrity:**
 - Citations used in text (`\cite{key}`) but missing from all `.bib` files
@@ -292,15 +278,10 @@ Flag:
 - **Duplicate BibTeX keys** — same key defined in multiple `.bib` files (e.g., `myRefs.bib` and `refs.bib`)
 
 **BibTeX entry quality:**
-- Missing `doi` fields for journal papers (RA-L, T-RO, IJRR, IJCV)
 - arXiv papers formatted inconsistently — some as `@misc`, some as `@article`
-- Inconsistent author name format (`Firstname Lastname` vs `Lastname, Firstname`) — IEEE style requires `Lastname, F.`
 - Missing required fields: `author`, `title`, `year`, and either `journal` or `booktitle`
 - Venue abbreviations inconsistent across entries (e.g., `CVPR` vs `Proc. CVPR` vs `IEEE CVPR`)
-- Typos in URL fields (`Avaliable:` instead of `Available:`)
-
-**Citations inside captions:**
-- Flag all `\cite{}` inside `\caption{}` blocks — can break hyperref and create awkward layout
+- Typos in URL fields (e.g., `Avaliable:` instead of `Available:`)
 
 **Non-breaking space before citations:**
 ```
@@ -310,12 +291,12 @@ Flag:
 
 ---
 
-### CHECK C8 — Figure & Table Safety
+### CHECK C7 — Figure & Table Safety
 
 **Figures:**
 
-- Figure file referenced in `\includegraphics{}` but **file does not exist** in `figures/` directory — list all missing files
-- **Dummy/placeholder figures** still present (`figures/dummy_figures/`, `paper/dummy_figures/`, or `fig1.png` placeholder)
+- Figure file referenced in `\includegraphics{}` or `\input{}` but **file does not exist** in `figures/` — list all missing files (do not flag files that exist only in `pics/`, as those are raw sources not meant to be directly included)
+- **Dummy/placeholder figures** still present in `figures/` (`dummy_figures/`, `fig1.png` placeholder, etc.)
 - `\includegraphics` with **absolute path** (will break on other machines)
   ```
   ❌ \includegraphics{/Users/myname/paper/figures/fig1.pdf}
@@ -342,7 +323,7 @@ Flag:
 
 ---
 
-### CHECK C9 — Hidden Human Errors
+### CHECK C8 — Hidden Human Errors
 
 **Placeholder and incomplete content:**
 - `TODO`, `XXX`, `FIXME`, `TBD`, `???`, `[CITE]`, `[REF]`, `[FILL]` anywhere in `.tex` files
@@ -358,7 +339,7 @@ Flag:
 - Default template title not replaced
 - `Anonymous Authors` still in `\author{}` for non-blind submissions (or real author names present in blind submissions)
 - Commented-out sections with old content still in final files
-- Content in `deprecated/` folder that is still `\input`-ted from `main.tex`
+- Content in `deprecated/` folder that is still `\input`-ted from the root `.tex` file
 
 **Formatting artifacts:**
 - Double spaces between words (common after find-and-replace operations)
@@ -372,7 +353,7 @@ Flag:
 
 ---
 
-### CHECK C10 — Academic Writing (LaTeX-Detectable)
+### CHECK C9 — Academic Writing (LaTeX-Detectable)
 
 These issues are checkable by reading the `.tex` source directly.
 
