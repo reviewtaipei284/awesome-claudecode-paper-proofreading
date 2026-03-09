@@ -231,6 +231,20 @@ Figures and tables must be referenced in strictly ascending numerical order as t
 - Apply the same check to tables independently: Table 1 → Table 2 → Table 3 ...
 - Note: a figure may be referenced multiple times (e.g., "as shown earlier in Fig. 2"), which is acceptable. Only the **first occurrence** of each number determines its position in the sequence.
 
+#### Quantitative Consistency Between Text and Tables/Figures
+
+Numbers stated in the body text must exactly match the numbers shown in the corresponding table or figure. This is one of the most embarrassing errors to have in a submitted paper.
+
+- Scan every quantitative claim in the text that references a specific value and cross-check it against the corresponding table cell or figure data point:
+  - ❌ Text says `"3.4% improvement"` but Table 2 shows `2.9%`
+  - ❌ Text says `"our method runs at 42 Hz"` but Table 3 shows `38 Hz`
+  - ❌ Text says `"reduces ATE by half"` but the numbers show a reduction from `0.48 m` to `0.31 m` (not half)
+  - ✔ Text says `"3.4% improvement"` and Table 2 shows exactly `3.4%`
+- Also check that **superlatives in text match table rankings**:
+  - ❌ Text says `"achieves the lowest ATE"` but the table shows another method with a lower value
+  - ❌ Text says `"second best in RTE"` but the table shows it ranked third
+- Flag every mismatch as CRITICAL — a reviewer who checks even one number will lose trust in all results.
+
 ---
 
 ### CATEGORY F — LaTeX Formatting
