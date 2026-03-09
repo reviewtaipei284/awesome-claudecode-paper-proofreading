@@ -375,11 +375,24 @@ These issues are checkable by reading the `.tex` source directly.
 
 **Punctuation patterns:**
 ```
-❌ i.e. the result     →  ✅ i.e., the result
-❌ e.g. KITTI          →  ✅ e.g., KITTI
 ❌ et al               →  ✅ et al.
 ❌ etc in the text     →  ✅ among others (or list exhaustively)
 ```
+
+**`\ie` and `\eg` macros** — `i.e.,` and `e.g.,` should never be typed manually. Flag any bare occurrence of `i.e.` or `e.g.` in `.tex` files and check whether `\ie` / `\eg` macros are defined in `shortcuts.tex` or `preamble_symbols.tex`:
+
+```
+✅ Recommended macro definitions (add to shortcuts.tex or preamble_symbols.tex):
+\newcommand{\ie}{i.e.,\xspace}
+\newcommand{\eg}{e.g.,\xspace}
+
+❌ "i.e. the result"   ← missing macro and missing comma
+❌ "i.e., the result"  ← correct punctuation but should still use \ie
+✅ "\ie the result"    ← correct: macro handles comma and spacing
+✅ "\eg KITTI"         ← correct
+```
+
+If the macros are missing, flag it as a style issue and suggest adding the definitions. If the macros exist but bare `i.e.` / `e.g.` still appear in section files, flag each occurrence.
 
 **`state-of-the-art` consistency:**
 ```

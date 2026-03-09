@@ -183,11 +183,25 @@ Check for the following patterns:
 | Equation reference style | `equation (3)`, `Eq. 3` | `\Cref{eq:xxx}` or `\eqref{eq:xxx}` |
 | Unit without thin space | `6.1m × 6.1m` | `6.1\,m $\times$ 6.1\,m` |
 | Missing Oxford comma | `size and orientation` | `size, and orientation` |
-| `i.e.` without comma | `i.e. the result` | `i.e., the result` |
-| `e.g.` without comma | `e.g. KITTI` | `e.g., KITTI` |
+| bare `i.e.` or `e.g.` | `i.e., the result` / `e.g., KITTI` | use `\ie` / `\eg` macros (see below) |
 | `et al.` without period | `et al ` | `et al.` |
 | `state-of-the-art` inconsistency | `state of the art method` | `state-of-the-art method` (adjective) / `state of the art` (noun) |
 | Non-breaking space before citation/ref | ` \cite{x}`, ` \ref{fig:x}` | `~\cite{x}`, `~\ref{fig:x}` |
+
+**`\ie` and `\eg` macros:**
+
+`i.e.,` and `e.g.,` should never be typed manually. Flag any bare `i.e.` or `e.g.` in the source and verify the macros are defined (typically in `shortcuts.tex` or `preamble_symbols.tex`):
+
+```
+✅ Recommended definitions:
+\newcommand{\ie}{i.e.,\xspace}
+\newcommand{\eg}{e.g.,\xspace}
+
+❌ "i.e. the result"   ← missing macro and missing comma
+❌ "i.e., the result"  ← correct punctuation but should still use \ie
+✅ "\ie the result"    ← correct
+✅ "\eg KITTI"         ← correct
+```
 
 Also check:
 
