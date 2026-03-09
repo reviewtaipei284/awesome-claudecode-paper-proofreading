@@ -142,7 +142,7 @@ Check for:
 - **Scope** — for a 6–8 page conference paper, Related Work should cite roughly 15–25 papers and span approximately one column. Flag if it is significantly shorter (insufficient coverage) or longer (may be eating over the page budget).
 - **Quantitative scope claims** inconsistent with the citation list:
   - ❌ `"There are only a few works using diffusion models [1, 2, 3, 4, 5]"` → not a few
-- **Key difference** — At the end of related works, a user should briefly state the key difference from the proposed approach. Flag if all paragraphs describes prior methods without any comparison to this work.
+- **Key difference** — at least one mention of how the proposed approach differs from prior work must appear somewhere in the Related Work section, either at the end of each thematic paragraph or in a brief closing paragraph. Flag as MAJOR if the entire section describes prior methods with zero comparison to this work.
 
 #### Methodology / Equations
 
