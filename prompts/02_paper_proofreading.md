@@ -206,11 +206,17 @@ Check each caption for:
 - Figures defined but **never referenced** anywhere in the text
 - Inconsistent figure reference style (`"Fig. 3"` vs `"Figure 3"` vs `"\Cref{}"`) — standardize
 - Axis labels and legends readable at typical print size
+- **Font size consistency** — fonts used inside figures (axis labels, tick labels, legends, annotations) should not be noticeably larger than the caption font size (`\footnotesize` in most IEEE/RA-L templates). Oversized in-figure text looks unpolished and inconsistent with the surrounding text. Flag if fonts appear significantly larger than the caption.
+- **Tick label font size** — tick labels on plot axes should match the general in-figure font size and must not be smaller than legible at print size. Tiny tick labels (common when exporting from matplotlib with default settings) are a frequent polish issue; flag if they appear significantly smaller than axis labels.
+- **Thousand separators in tick labels** — numeric tick labels on axes must use thousand separators for values ≥ 1000. Flag plots where tick labels show raw numbers without separators:
+  - ❌ axis ticks showing `1000`, `10000`, `100000`
+  - ✔ axis ticks showing `1,000`, `10,000`, `100,000`
+- **Excessive white space** — flag figures that contain large empty regions (unused margins, excessive padding around the content area, wide gaps between subfigures). Empty space that could be reclaimed suggests the figure has not been cropped or composed carefully. Suggest tightening the layout or resizing to better fill the column width.
 
 #### Tables
 
 - Bold/underline convention for best/second-best values **defined in every table caption** — not just visually implied
-- Asterisks or special markers explained in caption (not only in a footnote)
+- Asterisks or special markers should be explained either in caption or in a footnote
 - Consistent metric names across all tables
 - Units included in column headers
 - `\hline` instead of `\toprule`/`\midrule`/`\bottomrule` — flag if venue uses booktabs style
@@ -226,9 +232,9 @@ Check for the following patterns:
 | Missing thin space before unit | `5m`, `10Hz`, `100ms` | `5\,m`, `10\,Hz`, `100\,ms` |
 | Missing thousand separator | `10000`, `1000000` | `10,000`, `1,000,000` |
 | Inconsistent figure reference | `Figure 3` vs `Fig. 3` | standardize to one style |
-| Equation reference style | `equation (3)`, `Eq. 3` | `\Cref{eq:xxx}` or `\eqref{eq:xxx}` |
+| Equation reference style | `equation (3)`, `Eq. 3` | `\Cref{eq:xxx}`. The output should be either (3) or Eq. (3)|
 | Unit without thin space | `6.1m × 6.1m` | `6.1\,m $\times$ 6.1\,m` |
-| Missing Oxford comma | `size and orientation` | `size, and orientation` |
+| Missing Oxford comma | `size, foo, bar and orientation` | `size, foo, bar, and orientation` |
 | bare `i.e.` or `e.g.` | `i.e., the result` / `e.g., KITTI` | use `\ie` / `\eg` macros (see below) |
 | `et al.` without period | `et al ` | `et al.` |
 | `state-of-the-art` inconsistency | `state of the art method` | `state-of-the-art method` (adjective) / `state of the art` (noun) |
@@ -253,7 +259,6 @@ Also check:
 
 - Consistent use of `\Cref{}` vs `\cref{}` vs `\ref{}`
 - Section title casing consistency (Title Case vs Sentence case — pick one)
-- `"etc."` appearing in formal prose
 
 ---
 
