@@ -1,8 +1,6 @@
 <div align="center">
     <h1>Awesome Claude Code — Paper Proofreading</h1>
     <a href="https://github.com/LimHyungTae/awesome-claudecode-paper-proofreading"><img src="https://img.shields.io/badge/Claude_Code-Prompt-blueviolet?logo=anthropic" /></a>
-    <a href="https://github.com/LimHyungTae/awesome-claudecode-paper-proofreading"><img src="https://img.shields.io/badge/LaTeX-Workspace_Audit-008080?logo=latex&logoColor=white" /></a>
-    <a href="https://github.com/LimHyungTae/awesome-claudecode-paper-proofreading"><img src="https://img.shields.io/badge/Venue-ICRA%20%7C%20RSS%20%7C%20CVPR%20%7C%20RA--L%20%7C%20T--RO-blue" /></a>
     <br />
     <br />
     <!-- VIDEO PLACEHOLDER: replace the line below with your demo video embed -->
@@ -58,22 +56,38 @@ ______________________________________________________________________
 
 ## :hammer: How to Use
 
-### Step 1 — Run the workspace audit first
+These prompts are used from **inside your paper workspace**, not from inside this repository.
+The `@` file reference in Claude Code resolves paths relative to the directory where `claude` is launched.
 
-Provide the root `.tex` file and macro file:
+### Setup — Clone this repo once
+
+```bash
+git clone https://github.com/LimHyungTae/awesome-claudecode-paper-proofreading.git ~/awesome-claudecode-paper-proofreading
+```
+
+### Step 1 — Navigate to your paper workspace and launch Claude Code
+
+```bash
+cd /path/to/your/paper
+claude
+```
+
+### Step 2 — Run the workspace audit first
+
+In the Claude Code session, reference the prompt by its **absolute path**, then attach your paper files:
 
 ```
-@prompts/01_latex_workspace_review.md
+@~/awesome-claudecode-paper-proofreading/prompts/01_latex_workspace_review.md
 
 @main.tex @shortcuts.tex
 ```
 
-### Step 2 — Run the content proofreader
+### Step 3 — Run the content proofreader
 
 Provide both the `.tex` source files **and the compiled PDF**:
 
 ```
-@prompts/02_paper_proofreading.md
+@~/awesome-claudecode-paper-proofreading/prompts/02_paper_proofreading.md
 
 @sections/introduction.tex @sections/methodology.tex @sections/experiments.tex
 @paper.pdf
@@ -84,7 +98,7 @@ Provide both the `.tex` source files **and the compiled PDF**:
 > - **Figure placement** — figures displaced far from their in-text reference
 > - **PDF-level annotations** — leftover review comments not yet resolved
 
-### Step 3 — Decide which issues to fix
+### Step 4 — Decide which issues to fix
 
 After Phase 1 output, respond with:
 
@@ -92,6 +106,14 @@ After Phase 1 output, respond with:
 discard 3, 7, 12    ← skip specific issues
 fix all critical    ← fix only CRITICAL issues
 proceed with all    ← fix everything
+```
+
+### Alternative — Copy prompt into `CLAUDE.md`
+
+If you want the prompt to activate automatically whenever you open a paper project with Claude Code, copy the relevant prompt content into a `CLAUDE.md` file at the root of your paper workspace:
+
+```bash
+cp ~/awesome-claudecode-paper-proofreading/prompts/01_latex_workspace_review.md /path/to/your/paper/CLAUDE.md
 ```
 
 ______________________________________________________________________
@@ -108,4 +130,4 @@ ______________________________________________________________________
 
 ## :link: Related
 
-- [paper-writing-checklist](https://github.com/LimHyungTae/paper-writing-checklist) — LaTeX workspace guidelines referenced by these prompts
+- [paper-writing-checklist](https://github.com/LimHyungTae/paper-writing-checklist) — LaTeX workspace guidelines referenced by these prompts in Korean
