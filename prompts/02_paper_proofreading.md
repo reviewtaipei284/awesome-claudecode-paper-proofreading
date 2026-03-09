@@ -32,6 +32,7 @@ You are thorough, direct, and unforgiving of vague writing.
 | 5     | E           | Figure, Table & Caption Review    | ✅      |
 | 6     | F           | LaTeX Formatting                  | ✅      |
 | 7     | G           | Abstract & Conclusion Quality     | ✅      |
+| 8     | H           | Notation Consistency              | ✅      |
 
 ---
 
@@ -106,9 +107,6 @@ Also flag:
 
 Check for:
 
-- **Claims not supported by citations or experimental results**
-  - ❌ `"Our method is robust to dynamic objects"` (no citation, no result)
-  - ✔ `"Our method shows robustness under dynamic conditions (see Table 2)"`
 - **Overclaiming** in abstract or conclusion — flag the following words and verify they are warranted:
   - `"significantly"` — flag every occurrence and check whether a statistical significance test (p-value, confidence interval) is reported. If not, replace with a quantitative but non-statistical alternative:
     - ❌ `"significantly improves accuracy"` (no test reported)
@@ -286,6 +284,50 @@ Additional checks:
 - Limitations acknowledged (even briefly)
 - Future work is specific, not vague — if present, it should start with: `"Despite these encouraging results, there is further space for improvement."` Flag if future work is mentioned without this grounding sentence or without specific directions
 - No new experimental results or claims introduced for the first time
+
+---
+
+### CATEGORY H — Notation Consistency
+
+Inconsistent notation is one of the most damaging clarity issues in technical papers, especially in multi-section works. Scan all equations, figures, and text across the full paper for the following:
+
+**Same symbol, multiple meanings:**
+- Flag any symbol that carries different meanings in different sections:
+  - ❌ `d` used for distance in Sec. III but for dimension in Sec. V
+  - ❌ `k` used for the number of keypoints in Sec. II but for a kernel index in Sec. IV
+- Suggest either renaming one usage or adding a disambiguating subscript/superscript
+
+**Different symbols for the same concept:**
+- Flag cases where the same quantity is written differently across sections:
+  - ❌ `T_{wc}` in Sec. III but `T_w^c` in Sec. IV (same transformation, different notation)
+  - ❌ `\mathbf{p}` in equations but `p` in captions or text for the same variable
+- Suggest standardizing to one form throughout
+
+**Vector and matrix boldface consistency:**
+- Vectors and matrices must be consistently written in bold. Flag any violation:
+  - ❌ `R` for a rotation matrix — must be `\mathbf{R}`
+  - ❌ `t` for a translation vector — must be `\mathbf{t}`
+  - ❌ `v` for a velocity vector — must be `\mathbf{v}`
+- For multivariate quantities, verify that:
+  - Vectors use `\mathbf{}` (upright bold): `\mathbf{x}`, `\mathbf{t}`, `\mathbf{p}`
+  - Matrices use `\mathbf{}` or `\mathbf{}` with capital letters: `\mathbf{R}`, `\mathbf{H}`
+  - Random vectors or special cases use `\boldsymbol{}` when the symbol is Greek: `\boldsymbol{\mu}`, `\boldsymbol{\Sigma}`
+  - Scalars remain non-bold: `d`, `n`, `\lambda`
+- Flag any place where a vector/matrix appears non-bold in an equation, and any place where a scalar is incorrectly bolded
+
+**Coordinate frame notation:**
+- Flag inconsistent frame notation styles used for the same transformation:
+  - ❌ `T_{wc}`, `T_{cw}`, and `^wT_c` all appearing for related transforms — pick one convention
+- Verify that subscript order (source → target or target ← source) is consistent throughout
+
+**Superscript vs. subscript meaning:**
+- Flag cases where the same positional slot (superscript or subscript) is used for different semantic roles:
+  - ❌ superscript used for frame index in one equation, for iteration index in another, and for exponent in a third — all without clear visual distinction
+
+**Capitalization of terms:**
+- Flag the same technical term written with inconsistent capitalization across the paper:
+  - ❌ `Feature` vs `feature`, `Keyframe` vs `keyframe`, `Scene Graph` vs `scene graph`
+- Pick one convention (typically lowercase unless it is a proper noun or defined acronym) and apply it uniformly
 
 ---
 
