@@ -24,12 +24,12 @@ ______________________________________________________________________
 
 These prompts are distilled from years of hands-on paper reviewing and mentoring experience by **[Hyungtae Lim](https://github.com/LimHyungTae)**, a researcher in robotics and 3D perception.
 
-- 🏆 **Three-time winner** of SLAM Competitions at IEEE ICRA
 - 📝 **Associate Editor**, IEEE Robotics and Automation Letters (RA-L)
 - 🌟 **RSS Pioneer 2024**
-- 🎖️ **ICRA Outstanding Reviewer** — selected from 7,400+ reviewers
+- 🎖️ **ICRA 2025 Outstanding Reviewer** — selected from 7,400+ reviewers
+- 📄 **Conducted 100+ paper reviews** across top robotics and CV venues
 
-The review rules in these prompts reflect the standards expected at top robotics and CV venues, refined through real annotated paper reviews across ICRA, RA-L, RSS, CVPR, AAAI, and BMVC submissions.
+The review rules in these prompts reflect the standards expected at top robotics and computer vision venues, refined through real annotated paper reviews across ICRA, RA-L, RSS, CVPR, AAAI, and BMVC submissions.
 
 ______________________________________________________________________
 
