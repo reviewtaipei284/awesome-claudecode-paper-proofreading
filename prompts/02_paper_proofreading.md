@@ -381,18 +381,7 @@ When two or more words jointly modify a noun and appear **before** it, they form
 ✅ "state-of-the-art method"
 ```
 
-**Rule 2 — Predicate or noun usage: no hyphen**
-
-When the same compound appears **after** the noun (predicate position) or is used as a standalone noun phrase, no hyphen:
-
-```
-✅ "the system runs in real time"       ← predicate; no hyphen
-✅ "the method is outlier robust"
-✅ "over the long term"
-✅ "the state of the art"               ← noun phrase; no hyphen
-```
-
-**Rule 3 — Adverb (-ly) + adjective: NEVER hyphenate**
+**Rule 2 — Adverb (-ly) + adjective: NEVER hyphenate**
 
 When the first word is an adverb ending in **-ly**, no hyphen is used regardless of position. The `-ly` already signals that the word modifies the next word, making the hyphen redundant:
 
@@ -408,20 +397,18 @@ When the first word is an adverb ending in **-ly**, no hyphen is used regardless
 
 | Incorrect | Correct | Rule |
 |-----------|---------|------|
-| `tightly-coupled` | `tightly coupled` | Rule 3: -ly adverb |
-| `loosely-coupled` | `loosely coupled` | Rule 3: -ly adverb |
-| `jointly-trained` | `jointly trained` | Rule 3: -ly adverb |
-| `end-to-end` (noun) | `end to end` | Rule 2: predicate/noun |
+| `tightly-coupled` | `tightly coupled` | Rule 2: -ly adverb |
+| `loosely-coupled` | `loosely coupled` | Rule 2: -ly adverb |
+| `jointly-trained` | `jointly trained` | Rule 2: -ly adverb |
 | `end to end` (adjective) | `end-to-end` | Rule 1: before noun |
 | `real time` (adjective) | `real-time` | Rule 1: before noun |
-| `real-time` (noun) | `real time` | Rule 2: predicate/noun |
-| `deep-learning` (adjective) | `deep learning` | Rule 3: noun phrase modifier — not a compound adjective |
+| `deep-learning` (adjective) | `deep learning` | Rule 2: noun phrase modifier — not a compound adjective |
 
 **Context-dependent checks (flag for manual review):**
 
 - `"real time"` / `"real-time"` — determine from context which is correct
 - `"state of the art"` / `"state-of-the-art"` — already in Category F; cross-check here too
-- Any `-ly` word followed by a hyphen — always wrong; flag as MINOR
+- Any `-ly` word followed by a hyphen — always wrong (Rule 2); flag as MINOR
 
 ---
 
