@@ -551,9 +551,10 @@ All issues are listed above with numbers `[1]`, `[2]`, `[3]`...
 
 **Please respond with one of:**
 
-- `discard [numbers]` — e.g., `discard 3, 7, 12` to skip those issues
-- `proceed with all` — to fix all detected issues
+- `fix safe` — fix only definite typos, duplicate words, and clear grammatical errors (unambiguous corrections; no rewrites or content changes)
 - `fix critical only` — to fix only CRITICAL issues
+- `proceed with all` — to fix all detected issues
+- `discard [numbers]` — e.g., `discard 3, 7, 12` to skip specific issues
 - `show section X only` — to focus review on a specific section
 
 **I will not make any changes until you confirm.**

@@ -514,9 +514,10 @@ All issues are listed above with numbers `[1]`, `[2]`, `[3]`...
 
 **Please respond with one of:**
 
-- `fix [numbers]` — e.g., `fix 1, 3, 5` to apply those fixes
+- `fix safe` — fix only definite typos, duplicate words, and clear grammatical errors (unambiguous corrections; no rewrites or content changes)
 - `fix all critical` — to fix only critical errors
 - `fix all` — to apply all suggested fixes
+- `fix [numbers]` — e.g., `fix 1, 3, 5` to apply specific fixes
 - `discard [numbers]` — to skip specific issues
 
 **I will not modify any files until you confirm.**
