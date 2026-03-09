@@ -477,51 +477,40 @@ Most common problems:
 - ...
 ```
 
-### 2. Full Issue List (Numbered)
+### 2. Full Issue List — File by File
 
-List ALL issues. Each issue must have a unique number.
+List all issues in the order the files are `\input`-ted (root file first, then each included file in inclusion order). Within each file, list issues in line-number order.
 
+Each entry format:
 ```
-[1]  Sec 2.1     | CRITICAL | Claim not supported by citation          | Add reference or soften
-[2]  Eq. 5       | MAJOR    | Variable d used before definition        | Define before equation
-[3]  Fig. 3 cap  | MAJOR    | Caption grammar: "able to" missing verb  | "Our method achieves..."
-[4]  Abstract    | MINOR    | Tense mismatch in sentence 3            | Change to present tense
-...
+[N]  L.XX   Description of the issue | Suggested fix
 ```
 
-### 3. Section-wise Breakdown
+Use `L.—` when a line number cannot be pinpointed (e.g., a pattern spanning the whole file).
 
-Group issues by paper section. Only list distinct issues — do not repeat what is already in the numbered list above.
+Example:
+```
+**`main.tex`**
+[1]  L.86   \methodname used in title but not defined in shortcuts.tex | Add \newcommand{\methodname}{...}
 
-**Abstract**
+**`sections/abstract.tex`**
+[2]  L.5    "SLAM" not expanded on first use | Write "simultaneous localization and mapping (SLAM)" at first occurrence
+[3]  L.12   No quantified result sentence; ends with vague "improved map quality" | Add specific metric, e.g., "achieves X% lower ATE on TUM RGB-D"
 
-| # | Location | Severity | Issue | Suggestion |
-|---|----------|----------|-------|------------|
+**`sections/introduction.tex`**
+[4]  L.23   "allowing the camera poses estimated easily" — missing "to be" | "allowing the camera poses to be estimated easily"
+```
 
-**Introduction**
+### 3. Issues by Severity
 
-| # | Location | Severity | Issue | Suggestion |
-|---|----------|----------|-------|------------|
+Group all issue numbers by severity level. Do not repeat descriptions — list numbers only.
 
-**Related Work**
-
-| # | Location | Severity | Issue | Suggestion |
-|---|----------|----------|-------|------------|
-
-**Methodology**
-
-| # | Location | Severity | Issue | Suggestion |
-|---|----------|----------|-------|------------|
-
-**Experimental Results**
-
-| # | Location | Severity | Issue | Suggestion |
-|---|----------|----------|-------|------------|
-
-**Conclusion**
-
-| # | Location | Severity | Issue | Suggestion |
-|---|----------|----------|-------|------------|
+```
+CRITICAL  →  [N], [N], ...
+MAJOR     →  [N], [N], ...
+MINOR     →  [N], [N], ...
+STYLE     →  [N], [N], ...
+```
 
 ### 4. Caption Review
 
@@ -532,7 +521,7 @@ Only list captions with issues.
 
 ### 5. LaTeX Formatting Patterns
 
-List patterns, not every individual occurrence.
+List recurring patterns (not every individual occurrence).
 
 | # | Pattern | Example Found | Suggested Fix |
 |---|---|---|---|

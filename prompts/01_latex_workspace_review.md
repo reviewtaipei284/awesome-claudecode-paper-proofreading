@@ -455,30 +455,43 @@ If the macros are missing, flag it as a style issue and suggest adding the defin
 
 ## Output Format
 
-### 1. Critical Errors
+### 1. Full Issue List — File by File
 
-Issues that will cause compile failure, wrong output, or submission rejection.
+List all issues in the order the files are read (root file first, then each `\input`-ted file in inclusion order). Within each file, list issues in line-number order.
 
-| # | File | Location | Issue | Impact |
-|---|------|----------|-------|--------|
+Each entry format:
+```
+[N]  L.XX   Description of the issue | Impact / Suggested fix
+```
 
-### 2. Potential Problems
+Use `L.—` when a line number cannot be pinpointed (e.g., a missing file, a duplicate key across two `.bib` files).
 
-Issues that will not break compilation but represent real errors.
+Example:
+```
+**`main.tex`**
+[1]  L.53   \usepackage{cleveref} loaded before \usepackage{hyperref} — breaks all hyperlinks | Swap order
 
-| # | File | Location | Issue | Impact |
-|---|------|----------|-------|--------|
+**`shortcuts.tex`**
+[2]  L.14   \methodname defined without \xspace — missing trailing space in text | Add \xspace
 
-### 3. Style Improvements
+**`sections/experiments.tex`**
+[3]  L.88   TODO: add ablation results — placeholder not removed | Remove before submission
+```
 
-Inconsistencies and formatting issues.
+### 2. Issues by Severity
 
-| # | File | Location | Issue | Suggestion |
-|---|------|----------|-------|------------|
+Group all issue numbers by severity level. Do not repeat descriptions — list numbers only.
 
-### 4. Infrastructure Suggestions
+```
+CRITICAL  →  [N], [N], ...
+MAJOR     →  [N], [N], ...
+MINOR     →  [N], [N], ...
+STYLE     →  [N], [N], ...
+```
 
-Recommendations for a safer LaTeX workspace setup.
+### 3. Infrastructure Suggestions
+
+Workspace-level recommendations not tied to a specific file or line.
 
 - ...
 
