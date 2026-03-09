@@ -480,13 +480,24 @@ Example:
 
 ### 2. Issues by Severity
 
-Group all issue numbers by severity level. Do not repeat descriptions — list numbers only.
+Group all issues by severity level. Include a brief one-line summary for each.
 
 ```
-CRITICAL  →  [N], [N], ...
-MAJOR     →  [N], [N], ...
-MINOR     →  [N], [N], ...
-STYLE     →  [N], [N], ...
+CRITICAL
+  [N]  File — brief summary
+  [N]  File — brief summary
+
+MAJOR
+  [N]  File — brief summary
+  ...
+
+MINOR
+  [N]  File — brief summary
+  ...
+
+STYLE
+  [N]  File — brief summary
+  ...
 ```
 
 ### 3. Infrastructure Suggestions
