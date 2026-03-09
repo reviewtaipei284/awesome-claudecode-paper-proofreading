@@ -219,6 +219,18 @@ Check each caption for:
 - Units included in column headers
 - `\hline` instead of `\toprule`/`\midrule`/`\bottomrule` — flag if venue uses booktabs style
 
+#### Reference Order
+
+Figures and tables must be referenced in strictly ascending numerical order as they appear in the body text. LaTeX floats can drift from their intended position, causing the in-text reference order to become non-sequential.
+
+- Scan all figure and table references in reading order and record the sequence in which they first appear
+- Flag any case where a number is skipped or a lower number appears after a higher one:
+  - ❌ `"... as shown in Fig. 3 ... see Fig. 9 ... as in Fig. 4 ..."` — Fig. 4 appears after Fig. 9
+  - ❌ `"... Fig. 1 ... Fig. 2 ... Fig. 5 ..."` — Fig. 3 and Fig. 4 never referenced before Fig. 5
+  - ✔ `"... Fig. 1 ... Fig. 2 ... Fig. 3 ... Fig. 4 ..."` — sequential
+- Apply the same check to tables independently: Table 1 → Table 2 → Table 3 ...
+- Note: a figure may be referenced multiple times (e.g., "as shown earlier in Fig. 2"), which is acceptable. Only the **first occurrence** of each number determines its position in the sequence.
+
 ---
 
 ### CATEGORY F — LaTeX Formatting
