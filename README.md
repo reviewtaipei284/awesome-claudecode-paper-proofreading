@@ -84,7 +84,7 @@ In the Claude Code session, reference the prompt by its **absolute path**, then 
 
 ### Step 3 — Run the content proofreader
 
-Provide the root `.tex` file and the compiled PDF:
+Provide the root `.tex` file and the compiled PDF. The prompt automatically instructs Claude to follow all `\input{...}` calls and read every included section file:
 
 ```
 @~/awesome-claudecode-paper-proofreading/prompts/02_paper_proofreading.md
