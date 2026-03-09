@@ -233,10 +233,14 @@ Flag any pattern where the same type label (`Fig.`, `Table`, `Eq.`) is repeated 
 ❌ "Fig. 1a"       ← no parentheses; ambiguous
 ❌ "Fig. 1-a"      ← incorrect separator
 ✅ "Fig. 1(a)"     ← correct: parentheses around the subfigure label
-✅ "\Cref{fig:x}(a)"  ← with cleveref for the parent + manual subfigure label
 ```
 
-If `subcaption` or `subfig` is used, check whether `\subref{fig:x:a}` is configured to produce `(a)` and that the surrounding reference produces `Fig. 1(a)` not `Fig. 1a`.
+The correct output (`Figs. 5(a) and 5(b)`) requires this preamble setting:
+```
+\renewcommand\thesubfigure{(\alph{subfigure})}
+```
+
+Check that this line exists in the preamble. If it is missing, subfigure references will render as `Fig. 5a` instead of `Fig. 5(a)`.
 
 **General checks:**
 - Mixed use of `\Cref`, `\cref`, `\ref` — standardize
