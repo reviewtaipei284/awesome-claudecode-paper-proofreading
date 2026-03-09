@@ -28,7 +28,7 @@ These prompts are distilled from years of hands-on paper reviewing and mentoring
 - 🎖️ **ICRA 2025 Outstanding Reviewer** — selected from 7,400+ reviewers
 - 📄 **Conducted 100+ paper reviews** across top robotics and CV venues
 
-The review rules in these prompts reflect the standards expected at top robotics and computer vision venues, refined through real paper reviews and publications across ICRA, IROS, RSS, CVPR, ICCV, NeurIPS, AAAI, RA-L, T-RO, IJRR, T-PAMI, T-IV, and BMVC.
+The review rules in these prompts reflect the standards expected at top robotics and computer vision venues, refined through real paper reviews and publications across ICRA, IROS, RSS, CVPR, ICCV, NeurIPS, AAAI, RA-L, T-RO, IJRR, T-PAMI, T-IV, etc.
 
 ______________________________________________________________________
 
