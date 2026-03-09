@@ -86,9 +86,13 @@ Check for:
 
 Flag the following issues regardless of whether the writer is a native speaker.
 
-**Typos and spelling errors:**
+**Typos and spelling errors — flag as CRITICAL:**
+- Misspelled words (`"lastest"` → `"latest"`, `"though the lens"` → `"through the lens"`)
 - Misspelled technical terms (`"detecter-free"` → `"detector-free"`, `"idential"` → `"identical"`)
+- Duplicate words (`"the the"`, `"is is"`) — flag as CRITICAL
 - Non-standard compound words (`"misestimated"` → `"incorrectly estimated"`, `"parallelly"` → `"in parallel"`)
+
+> **Why CRITICAL?** A single spelling error tells a reviewer the paper was not proofread. Flag all definite misspellings and duplicate words as CRITICAL regardless of their apparent triviality.
 
 **Grammatical errors:**
 - Subject-verb agreement errors, especially after `"et al."`:
@@ -126,11 +130,12 @@ Nominalization (turning verbs into nouns) makes sentences longer and weaker. Pre
 **Verb choice for contributions:**
 - `"suggest a method"` → prefer `"propose"` for a novel algorithm, `"investigate"` / `"study"` / `"explore"` for an analysis, `"present"` for a system or dataset
 
-**Citation-as-noun style** — when referring to other authors as the subject of a sentence, use `Author~\etalcite{#}` form, not a bare citation number and not passive voice:
+**Citation-as-noun style** — when referring to other authors as the subject of a sentence, use `Author~\etalcite{#}` form, not a bare citation number and not passive voice. A non-breaking space `~` is required between the author name and `\etalcite{}`:
   ```
-  ❌ "[3] proposes..."              ← citation number as subject
-  ❌ "is proposed by [3]"           ← passive voice that erases the authors
-  ✅ "Lim~\etalcite{lim2023} propose..."   ← author named, verb plural
+  ❌ "[3] proposes..."                    ← citation number as subject
+  ❌ "is proposed by [3]"                 ← passive voice that erases the authors
+  ❌ "Lim\etalcite{lim2023} propose..."   ← missing ~ before \etalcite
+  ✅ "Lim~\etalcite{lim2023} propose..."  ← author named, non-breaking space, verb plural
   ```
 
 **Circular descriptions:**
@@ -288,8 +293,8 @@ Check for the following patterns:
 
 | Pattern | Bad Example | Correct |
 |---|---|---|
-| Missing thin space before unit | `5m`, `10Hz`, `100ms` | `5\,m`, `10\,Hz`, `100\,ms` |
-| Missing thousand separator | `10000`, `1000000` | `10,000`, `1,000,000` |
+| Missing thin space before unit | `5m`, `10Hz`, `100ms` | `5\,m`, `10\,Hz`, `100\,ms` (use `\,` — LaTeX thin space, not a comma) |
+| Missing thousand separator (integers only) | `10000`, `1000000` | `10,000`, `1,000,000` — **do NOT flag decimal values** such as `4793.31` |
 | Inconsistent figure reference | `Figure 3` vs `Fig. 3` | standardize to one style |
 | Equation reference style | `equation (3)`, `Eq. 3` | `\Cref{eq:xxx}`. The output should be either (3) or Eq. (3)|
 | Unit without thin space | `6.1m × 6.1m` | `6.1\,m $\times$ 6.1\,m` |
@@ -333,7 +338,13 @@ Check that the abstract follows the WHY → PROBLEM → HOW → RESULTS structur
 - **RESULTS** (1 sentence): quantified result or key outcome, not a vague claim
 
 Additional checks:
-- Contributions are quantified, not vague (`"we achieve X% lower ATE"`, not `"we improve performance"`)
+- **Quantified RESULTS** — the RESULTS sentence must include a specific metric or number (e.g., `"achieves 12% lower ATE on TUM RGB-D"`). A vague claim such as `"improved map quality"` or `"better performance"` with no number is insufficient; flag as MAJOR:
+  - ❌ `"our method achieves improved map quality"` — no metric, no number
+  - ✅ `"our method reduces ATE by 15% over the best uncalibrated baseline on TUM RGB-D"`
+- **Acronyms must be expanded in the abstract** — every acronym used in the abstract must be defined within the abstract itself, even if it is commonly known in the field. Do NOT rely on definitions from the body text. Flag first use of any unexpanded acronym as MINOR:
+  - ❌ `"simultaneous localization and mapping is key"` then later `"SLAM"` without expansion
+  - ❌ `"SLAM"` used without ever writing `"simultaneous localization and mapping (SLAM)"`
+  - ✅ `"simultaneous localization and mapping (SLAM) is a core capability..."`
 - Acronyms defined in the abstract are actually reused within the abstract (otherwise do not define them there)
 - **No citations** — the abstract must contain zero `\cite{}` calls. Flag any citation as CRITICAL.
 - **Single paragraph** — the abstract must be written as one unbroken paragraph. Any blank line or `\\` inside the abstract environment is a formatting error; flag as CRITICAL.
