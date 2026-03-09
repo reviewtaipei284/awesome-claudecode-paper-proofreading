@@ -43,7 +43,7 @@ ______________________________________________________________________
 | Category | Description |
 |----------|-------------|
 | A | Language & grammar, tense consistency, Related Work tense |
-| B | Non-native English patterns ("parallelly", "presented", "suggest") |
+| B | Language quality & awkward expression: typos, nominalization, filler phrases, citation-as-noun style |
 | C | Scientific clarity: overclaiming, "significantly", unsupported claims |
 | D | Structure & flow: intro claims, experiment purpose, equation narrative |
 | E | Figure/table/caption review: self-containedness, reference order, quantitative consistency |
