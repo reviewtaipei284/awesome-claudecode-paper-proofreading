@@ -148,7 +148,7 @@ Check for:
 
 - **Equation re-explanation** — if an equation is defined in the method section and then referenced again in the ablation or experiments section, the surrounding text must use a cross-reference rather than re-explain the terms:
   - ❌ Ablation re-typesetting Eq. (3) and re-defining all variables as if it is the first occurrence
-  - ✔ `"Removing $\mathcal{L}_{\text{reg}}$ from \eqref{eq:total_loss} (defined in Sec. III-B) leads to..."`
+  - ✔ `"Removing $\mathcal{L}_{\text{reg}}$ from \eqref{eq:total_loss} leads to..."`
 - **Narrative build-up** — an equation reference must be accompanied by enough surrounding context for the reader to understand what is being claimed. Flagging cases where an equation number appears in a sentence but the variables in it are not explained or pointed to:
   - ❌ `"This is achieved by optimizing \eqref{eq:loss}."` (no explanation of what the optimization achieves or what the terms are)
   - ✔ `"We minimize \eqref{eq:loss}, where $\lambda$ controls the trade-off between reconstruction and regularization."`
@@ -184,12 +184,17 @@ Check each caption for:
 - **Grammatical completeness** (subject + verb + object)
   - ❌ `"Our method is able to realistic geometric arrangement"` (missing verb after "able to")
   - ✔ `"Our method achieves a realistic geometric arrangement"`
-- **Self-containedness** — all abbreviations must be defined within the caption itself
-  - ❌ TABLE with `FID`, `KID`, `CA%` columns but no in-caption definition
-  - ✔ `"FID: Fréchet Inception Distance; KID: Kernel Inception Distance"`
+- **Self-containedness** — a caption must be fully understandable without reading the body text. This requires:
+  - **Abbreviations defined in the caption** — every acronym or shorthand appearing in the figure or table must be expanded within the caption itself, not just somewhere in the body. Either inline or listed style is acceptable:
+    - ❌ TABLE with `ATE`, `RTE` column headers but no in-caption definition anywhere
+    - ✔ inline: `"We report absolute trajectory error (ATE) and relative trajectory error (RTE)."`
+    - ✔ listed: `"ATE: Absolute Trajectory Error; RTE: Relative Trajectory Error"`
+  - **Baseline methods cited in the caption** — if a figure or table compares against other methods, each baseline must be cited directly in the caption so the reader can identify it without hunting through the text:
+    - ❌ `"Comparison against Quatro, TEASER++, and KISS-Matcher."` (no citations)
+    - ✔ `"Comparison against Quatro~\cite{lim2022quatro}, TEASER++~\cite{yang2021teaser}, and KISS-Matcher~\cite{lim2025kissmatcher}."` (cite each individually)
+    - ✔ `"Comparison against baseline approaches~\cite{lim2022quatro,yang2021teaser,lim2025kissmatcher}."` (grouped citation also acceptable)
+  - **Dataset names identified** — if results are shown per dataset or sequence, the dataset must be named or cited in the caption
 - **No duplication of body text** — captions must not summarize the method section paragraph
-- **Captions describe observations, not conclusions**
-  - ❌ `"Our approach successfully reduces..."` → ✔ `"Our approach reduces X by Y% compared to Z"`
 - **Tense consistency** within captions
 - **Period at end** of every caption
 
