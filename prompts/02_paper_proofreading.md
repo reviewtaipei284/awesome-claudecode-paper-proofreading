@@ -58,6 +58,7 @@ Check for:
 - Tense inconsistency
   - Use **present tense** for established facts and contributions ("We propose...", "The method achieves...")
   - Use **past tense** for experiment descriptions ("We evaluated...", "We trained...")
+  - **Related Work tense:** present tense is preferred ("X et al. propose...", "their method achieves...") out of respect for researchers whose work remains valid. However, consistent use of past tense throughout Related Work is also acceptable. Flag only if the tenses are **mixed** within the section.
 - Awkward or unnatural phrasing
 - Sentences beginning with coordinating conjunctions ("And...", "But...", "Or..." — avoid in formal prose)
 - Passive voice overuse where active voice is clearer
