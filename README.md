@@ -3,8 +3,7 @@
     <a href="https://github.com/LimHyungTae/awesome-claudecode-paper-proofreading"><img src="https://img.shields.io/badge/Claude_Code-Prompt-blueviolet?logo=anthropic" /></a>
     <br />
     <br />
-    <!-- VIDEO PLACEHOLDER: replace the line below with your demo video embed -->
-    <!-- <p align="center"><a href="YOUR_VIDEO_URL"><img src="YOUR_THUMBNAIL_URL" alt="Demo Video" width="95%"/></a></p> -->
+    <p align="center"><img src="https://github.com/user-attachments/assets/b2a97cb8-8535-4beb-b6af-2f641d1962c9" alt="Demo" width="95%"/></p>
     <p><strong><em>Detect first. Fix with confidence.</em></strong></p>
 </div>
 
