@@ -30,6 +30,11 @@ Do this silently before producing any output. The review must cover the **full p
 
 **Phase 2 — Fix:** After the user reviews the list and specifies which issues to fix, apply only the approved ones.
 
+**Phase 2 constraints (apply when making any edit):**
+- **No em dashes** (`—`) in fixes. Use a comma, semicolon, colon, or restructure the sentence instead:
+  - ❌ `"Our method — which is fast — achieves..."` → ✅ `"Our method, which is fast, achieves..."`
+  - ❌ `"The result is clear — we outperform all baselines."` → ✅ `"The result is clear: we outperform all baselines."`
+
 ---
 
 ## Active Review Categories
