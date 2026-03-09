@@ -13,6 +13,30 @@ https://github.com/LimHyungTae/paper-writing-checklist
 
 ---
 
+## Files to Inspect
+
+The user will provide the root `.tex` file. Before running any checks, you must:
+
+1. Read the root `.tex` file provided by the user.
+2. Find every `\input{...}` and `\include{...}` call in that file.
+3. Read each of those files as well (typically `sections/*.tex`, `shortcuts.tex`, shared preamble files, etc.).
+4. Repeat recursively if any of those files also contain `\input{...}` calls.
+5. Also read all `.bib` files referenced in `\bibliography{...}` calls.
+
+Do this silently before producing any output. The audit must cover the **full workspace**, not just the root file.
+
+The following categories of files are of particular interest (read all that exist):
+
+**Main document:**
+- The root `.tex` file provided by the user (contains `\documentclass` and `\begin{document}`)
+
+**Macro files (check all that exist):**
+- `shortcuts.tex`
+- `macros.tex` / `commands.tex`
+- `preamble.tex`
+
+---
+
 ## How This Prompt Works (Two-Phase)
 
 **Phase 1 — Audit:** Run all active checks. Output every issue with a unique number `[1]`, `[2]`, `[3]`...
@@ -21,17 +45,9 @@ https://github.com/LimHyungTae/paper-writing-checklist
 
 ---
 
-## Files to Inspect
+## Additional File Targets
 
-Read the following files if they exist (adapt to the actual workspace structure):
-
-**Main document:**
-- The root `.tex` file that contains `\begin{document}` (the filename varies per user — find it by looking for the file with `\documentclass` and `\begin{document}`)
-
-**Macro files (check all that exist):**
-- `shortcuts.tex`
-- `macros.tex` / `commands.tex`
-- `preamble.tex`
+After following all `\input{}` chains, also check the following if they exist:
 
 **Shared preamble (if workspace uses a shared references folder):**
 - `../references/preamble_packages.tex`
