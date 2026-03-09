@@ -132,19 +132,46 @@ Check for:
 
 ### CATEGORY D — Structure & Flow
 
-Check for:
+#### Introduction
+
+- **Main contribution paragraph** — verify there is a dedicated paragraph that explicitly starts with or centers on the main contribution. The reader must not have to infer it.
+
+#### Related Work
+
+- **Must exist as a standalone section** — Related Work must never be merged into the Introduction, even under page pressure. Reviewers consistently expect a dedicated section and will flag its absence. If the paper folds related work into the introduction or omits it entirely, flag this as CRITICAL.
+- **Scope** — for a 6–8 page conference paper, Related Work should cite roughly 15–25 papers and span approximately one column. Flag if it is significantly shorter (insufficient coverage) or longer (may be eating over the page budget).
+- **Quantitative scope claims** inconsistent with the citation list:
+  - ❌ `"There are only a few works using diffusion models [1, 2, 3, 4, 5]"` → not a few
+- **Key difference** — At the end of related works, a user should briefly state the key difference from the proposed approach. Flag if all paragraphs describes prior methods without any comparison to this work.
+
+#### Methodology / Equations
+
+- **Equation re-explanation** — if an equation is defined in the method section and then referenced again in the ablation or experiments section, the surrounding text must use a cross-reference rather than re-explain the terms:
+  - ❌ Ablation re-typesetting Eq. (3) and re-defining all variables as if it is the first occurrence
+  - ✔ `"Removing $\mathcal{L}_{\text{reg}}$ from \eqref{eq:total_loss} (defined in Sec. III-B) leads to..."`
+- **Narrative build-up** — an equation reference must be accompanied by enough surrounding context for the reader to understand what is being claimed. Flagging cases where an equation number appears in a sentence but the variables in it are not explained or pointed to:
+  - ❌ `"This is achieved by optimizing \eqref{eq:loss}."` (no explanation of what the optimization achieves or what the terms are)
+  - ✔ `"We minimize \eqref{eq:loss}, where $\lambda$ controls the trade-off between reconstruction and regularization."`
+
+#### Experimental Evaluation
+
+- **Experiment purpose statement** — every experiment or subsection in the evaluation must open with a clear statement of (a) WHY the experiment is there, (b) WHAT claim it supports, and (c) HOW it demonstrates the claim:
+  - ❌ Jumping directly into numbers without stating what the experiment is intended to show
+  - ✔ `"The following experiment is designed to support our first claim that \methodname achieves lower ATE than baseline methods under dynamic conditions."`
+- **Experiment ordering** — the most impressive or most claim-critical experiment should come first. Runtime/efficiency experiments should come last unless real-time performance is the primary contribution.
+- **Claim coverage** — verify that every claim made in the introduction is covered by at least one experiment. Flag any claim with no supporting result.
+
+#### General
 
 - **Repetition across sections**
   - Experimental setup described in both the method section and results section
   - Contribution list from the introduction copied verbatim into the conclusion
-  - The same method step described in method section AND ablation without a cross-reference
+  - The same method step described in the method section AND ablation without a cross-reference — ablation should cross-reference (`"As described in Sec. III-B, removing X..."`) rather than re-explain from scratch
 - **Missing transition sentences** at section or subsection boundaries
 - **Logical ordering errors** — forward references that assume the reader has already seen content that comes later
   - ❌ `"Before the introduction of our method, a novel module is proposed"` (inverted logic)
-- **Related Work quantitative scope claims** inconsistent with the citation list
-  - ❌ `"There are only a few works using diffusion models [1, 2, 3, 4, 5]"` → not a few
 - **Conclusion restating the abstract** word-for-word
-- **Ablation section** re-explaining the full architecture instead of referencing Section III
+- **Ablation section** re-explaining the full architecture instead of referencing the method section
 
 ---
 
@@ -229,17 +256,25 @@ Also check:
 
 **Abstract:**
 
-- Problem stated clearly in the first 1–2 sentences
-- Contributions are quantified, not vague ("we achieve X% improvement on Y benchmark", not "we improve performance")
-- Acronyms defined in abstract are actually reused within the abstract
-- No citations in abstract (unless required by venue)
+Check that the abstract follows the WHY → PROBLEM → HOW → RESULTS structure:
+
+- **WHY** (1–2 sentences): answers "why is this relevant? why should I care?" — sets the motivation without deep technical detail
+- **PROBLEM** (1 sentence): clearly states the specific problem the paper addresses, starting with something like "In this paper, we address the problem of..."
+- **HOW & WHAT** (~3 sentences): how the problem is approached in general, what is new, what makes the contribution special
+- **RESULTS** (1 sentence): quantified result or key outcome, not a vague claim
+
+Additional checks:
+- Contributions are quantified, not vague (`"we achieve X% lower ATE"`, not `"we improve performance"`)
+- Acronyms defined in the abstract are actually reused within the abstract (otherwise do not define them there)
+- **No citations** — the abstract must contain zero `\cite{}` calls. Flag any citation as CRITICAL.
+- **Single paragraph** — the abstract must be written as one unbroken paragraph. Any blank line or `\\` inside the abstract environment is a formatting error; flag as CRITICAL.
 - Does not introduce results that are not supported elsewhere in the paper
 
 **Conclusion:**
 
 - Does not merely restate the abstract word-for-word
 - Limitations acknowledged (even briefly)
-- Future work is specific, not just "we plan to improve X"
+- Future work is specific, not vague — if present, it should start with: `"Despite these encouraging results, there is further space for improvement."` Flag if future work is mentioned without this grounding sentence or without specific directions
 - No new experimental results or claims introduced for the first time
 
 ---
