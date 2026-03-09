@@ -101,9 +101,14 @@ Check for:
 - **Claims not supported by citations or experimental results**
   - ❌ `"Our method is robust to dynamic objects"` (no citation, no result)
   - ✔ `"Our method shows robustness under dynamic conditions (see Table 2)"`
-- **Overclaiming** in abstract or conclusion
-  - ❌ `"outperforming all existing methods"` — flag unless this is proven across ALL metrics
-  - ✔ `"achieving superior performance on X and Y benchmarks"`
+- **Overclaiming** in abstract or conclusion — flag the following words and verify they are warranted:
+  - `"significantly"` — flag every occurrence and check whether a statistical significance test (p-value, confidence interval) is reported. If not, replace with a quantitative but non-statistical alternative:
+    - ❌ `"significantly improves accuracy"` (no test reported)
+    - ✔ `"improves accuracy by 3.2%"` or `"substantially improves accuracy"`
+  - `"outperform"` / `"superior"` / `"state-of-the-art"` — flag unless the claim holds across all reported metrics and baselines. Suggest objective alternatives:
+    - ❌ `"outperforms all existing methods"`
+    - ✔ `"achieves lower ATE than all compared baselines (Table 2)"` or `"shows faster inference speed than X and Y"`
+  - `"demonstrate"` used for an unproven claim — distinguish between "we show" (in results) and "we demonstrate" (implies stronger proof)
 - **Causal logic gaps** — motivation stated without demonstrating the connection
   - ❌ `"Because fast speed is critical, our method combines X and Y"` → why does this motivation imply this design?
 - **Unsupported limitation statements** — limitations introduced but not bounded, addressed, or cited
