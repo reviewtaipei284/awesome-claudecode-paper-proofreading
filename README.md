@@ -18,6 +18,21 @@ The workflow is **two-phase**: Claude detects and lists all issues with unique n
 
 ______________________________________________________________________
 
+## :bust_in_silhouette: About the Author
+
+<p align="center"><img src="https://github.com/user-attachments/assets/4af4b29f-ce85-47a0-9472-406f2ca95572" alt="Hyungtae Lim" width="75%"/></p>
+
+These prompts are distilled from years of hands-on paper reviewing and mentoring experience by **[Hyungtae Lim](https://github.com/LimHyungTae)**, a researcher in robotics and 3D perception.
+
+- 🏆 **Three-time winner** of SLAM Competitions at IEEE ICRA
+- 📝 **Associate Editor**, IEEE Robotics and Automation Letters (RA-L)
+- 🌟 **RSS Pioneer 2024**
+- 🎖️ **ICRA Outstanding Reviewer** — selected from 7,400+ reviewers
+
+The review rules in these prompts reflect the standards expected at top robotics and CV venues, refined through real annotated paper reviews across ICRA, RA-L, RSS, CVPR, AAAI, and BMVC submissions.
+
+______________________________________________________________________
+
 ## :page_facing_up: Prompts
 
 ### [`prompts/01_latex_workspace_review.md`](prompts/01_latex_workspace_review.md)
