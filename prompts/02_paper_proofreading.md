@@ -291,11 +291,19 @@ Additional checks:
 
 Inconsistent notation is one of the most damaging clarity issues in technical papers, especially in multi-section works. Scan all equations, figures, and text across the full paper for the following:
 
-**Same symbol, multiple meanings:**
-- Flag any symbol that carries different meanings in different sections:
-  - ❌ `d` used for distance in Sec. III but for dimension in Sec. V
-  - ❌ `k` used for the number of keypoints in Sec. II but for a kernel index in Sec. IV
-- Suggest either renaming one usage or adding a disambiguating subscript/superscript
+**Symbol Overload Detection:**
+
+Symbol overload is one of the most common and damaging notation problems in equation-heavy papers. Build a symbol table by scanning all equations across all sections, then flag any letter or symbol reused for multiple distinct meanings — unless the second meaning is clearly and explicitly redefined at the point of reuse.
+
+| Symbol | First meaning (location) | Second meaning (location) | Verdict |
+|--------|--------------------------|---------------------------|---------|
+| `d`    | distance (Sec. III)      | feature dimension (Sec. V) | ❌ overloaded |
+| `k`    | keypoint count (Sec. II) | kernel index (Sec. IV)     | ❌ overloaded |
+| `N`    | number of frames (Sec. II) | batch size (Sec. V)      | ❌ overloaded |
+
+For each flagged symbol, suggest either:
+- Renaming one usage to a distinct letter or decorated variant (`d` → `D` for dimension, or `d_f` for feature dimension)
+- Adding a disambiguating subscript/superscript to both usages to make the scope explicit
 
 **Different symbols for the same concept:**
 - Flag cases where the same quantity is written differently across sections:
