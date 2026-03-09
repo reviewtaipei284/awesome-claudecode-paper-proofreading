@@ -62,9 +62,6 @@ Check for:
 - Awkward or unnatural phrasing
 - Sentences beginning with coordinating conjunctions ("And...", "But...", "Or..." — avoid in formal prose)
 - Passive voice overuse where active voice is clearer
-- Vague section openers — flag and suggest specific alternatives:
-  - ❌ `"In this section, we present..."` → ✔ `"We describe the three-stage pipeline..."`
-  - ❌ `"In this study, we..."` → replace with a specific claim
 - Missing Oxford comma in enumerations (e.g., `"size, weight, and orientation"`)
 - Comma splices and run-on sentences
 
@@ -77,12 +74,11 @@ Flag the following patterns commonly produced by non-native writers:
 | Incorrect Pattern | Correct Alternative |
 |---|---|
 | `"presented promising/good performance"` | `"demonstrated"` / `"showed"` |
-| `"suggest a method"` (when proposing) | `"propose"` |
+| `"suggest a method"` (when presenting new work) | `"propose"` is the default, but consider `"investigate"`, `"study"`, `"explore"`, or `"present"` when the contribution is an analysis or study rather than a novel algorithm — `"propose"` implies a stronger novelty claim |
 | `"parallelly"` | `"in parallel"` |
 | `"misestimated"` | `"incorrectly estimated"` |
 | `"Basically, ..."` (sentence opener) | remove or rewrite sentence |
 | `"like the following formula:"` | `"as follows:"` / `"as given in"` |
-| `"To be more concrete, ..."` | delete; restructure sentence |
 | `"unique and discriminative"` | pick one (redundant adjective pair) |
 | `"as demonstrated in [X]"` (citation-only) | `"as shown in [X]"` |
 | `"in the literature"` (filler after citation) | delete |
@@ -91,6 +87,18 @@ Flag the following patterns commonly produced by non-native writers:
 Also flag:
 
 - Circular descriptions (a module described only by restating its name or function)
+- **Citation-as-noun style** — when referring to other authors as the subject of a sentence, use `Author~\etalcite{#}` form, not a bare citation number as the subject and not passive voice. This is also a matter of respect for other researchers:
+  ```
+  ❌ "[3] proposes..."              ← citation number as subject
+  ❌ "[3] propose..."               ← still wrong; authors should be named
+  ❌ "is proposed by [3]"           ← passive voice that erases the authors
+  ✅ "Lim~\etalcite{lim2023} propose..."   ← author named, verb plural
+  ```
+  Also check that the verb is **plural** after `Author et al.` — "et al." implies multiple people:
+  ```
+  ❌ "Lim et al. proposes..."   ← singular verb; wrong
+  ✅ "Lim et al. propose..."    ← plural verb; correct
+  ```
 
 ---
 

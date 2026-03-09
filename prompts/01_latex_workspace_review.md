@@ -185,6 +185,26 @@ Look for macros like `\methodname`, `\ours`, `\method`, `\datasetname` and verif
 - Macros used in both text and math mode — check for `\text{}` wrappers where needed
 - Macros that use text-only commands (`\textbf`, `\emph`) inside math expressions
 
+**`\etalcite` macro** — required for citing authors as grammatical subjects:
+
+When a citation is used as a noun (the authors are the subject of the sentence), the correct form is `Lim~\etalcite{#}`, not `[#]` as a standalone subject or passive `is proposed by [#]`.
+
+Check that `\etalcite` is defined in `shortcuts.tex` or `preamble_symbols.tex`:
+```
+✅ \newcommand{\etalcite}[1]{et al.~\cite{#1}}
+
+Usage: Lim~\etalcite{lim2023} propose...   → "Lim et al. [X] propose..."
+```
+
+Flag if `\etalcite` is missing and grep for patterns where a bare `\cite{}` is used as a sentence subject:
+```
+❌ "\cite{lim2023} proposes..."        ← citation as subject; also wrong verb (singular)
+❌ "is proposed by \cite{lim2023}"     ← passive voice hiding the author
+✅ "Lim~\etalcite{lim2023} propose..."  ← author as subject, verb is plural
+```
+
+Note: the verb after `Author~\etalcite{}` must be **plural** ("propose", "show", "demonstrate") because "et al." implies multiple authors.
+
 **Shared symbol conflicts:**
 - If `../references/preamble_symbols.tex` exists, check for symbol name conflicts with locally defined macros in `shortcuts.tex`
 - Duplicate `\newcommand` definitions across the shared and local files
