@@ -82,38 +82,59 @@ Check for:
 
 ---
 
-### CATEGORY B — Non-Native English Patterns
+### CATEGORY B — Language Quality & Awkward Expression
 
-Flag the following patterns commonly produced by non-native writers:
+Flag the following issues regardless of whether the writer is a native speaker.
 
-| Incorrect Pattern | Correct Alternative |
-|---|---|
-| `"presented promising/good performance"` | `"demonstrated"` / `"showed"` |
-| `"suggest a method"` (when presenting new work) | `"propose"` is the default, but consider `"investigate"`, `"study"`, `"explore"`, or `"present"` when the contribution is an analysis or study rather than a novel algorithm — `"propose"` implies a stronger novelty claim |
-| `"parallelly"` | `"in parallel"` |
-| `"misestimated"` | `"incorrectly estimated"` |
-| `"Basically, ..."` (sentence opener) | remove or rewrite sentence |
-| `"like the following formula:"` | `"as follows:"` / `"as given in"` |
-| `"unique and discriminative"` | pick one (redundant adjective pair) |
-| `"as demonstrated in [X]"` (citation-only) | `"as shown in [X]"` |
-| `"in the literature"` (filler after citation) | delete |
-| `"two X serve two Y"` | restructure; "two...two" repetition |
+**Typos and spelling errors:**
+- Misspelled technical terms (`"detecter-free"` → `"detector-free"`, `"idential"` → `"identical"`)
+- Non-standard compound words (`"misestimated"` → `"incorrectly estimated"`, `"parallelly"` → `"in parallel"`)
 
-Also flag:
+**Grammatical errors:**
+- Subject-verb agreement errors, especially after `"et al."`:
+  ```
+  ❌ "Lim et al. proposes..."   ✅ "Lim et al. propose..."
+  ```
+- Wrong article usage (`"a algorithm"` → `"an algorithm"`)
+- Wrong preposition (`"robust to"` vs `"robust against"` — choose based on meaning)
 
-- Circular descriptions (a module described only by restating its name or function)
-- **Citation-as-noun style** — when referring to other authors as the subject of a sentence, use `Author~\etalcite{#}` form, not a bare citation number as the subject and not passive voice. This is also a matter of respect for other researchers:
+**Awkward or weak phrasing — prefer verb-driven sentences over noun-heavy ones:**
+
+Nominalization (turning verbs into nouns) makes sentences longer and weaker. Prefer a direct subject + verb structure:
+
+  ```
+  ❌ "The estimation of the pose is performed by our method."
+  ✅ "Our method estimates the pose."
+
+  ❌ "The performance of our approach is better."
+  ✅ "Our approach performs better."
+
+  ❌ "The implementation of the algorithm is done using C++."
+  ✅ "We implement the algorithm in C++."
+  ```
+
+  Think of it like: *"I'm a good cook"* is cleaner than *"My cooking ability is good"* — the same principle applies in academic writing. Flag any sentence where a verb has been turned into an abstract noun unnecessarily (`estimation`, `implementation`, `utilization`, `computation`, `verification`, etc.) when a direct verb would be clearer.
+
+**Redundant or filler expressions:**
+- `"unique and discriminative"` → pick one
+- `"like the following formula:"` → `"as follows:"` or `"as given in"`
+- `"In order to"` → `"To"` (shorter and equally correct)
+- `"due to the fact that"` → `"because"`
+- `"It is worth noting that"` → delete or restructure
+- `"it can be seen that"` → delete; state the observation directly
+
+**Verb choice for contributions:**
+- `"suggest a method"` → prefer `"propose"` for a novel algorithm, `"investigate"` / `"study"` / `"explore"` for an analysis, `"present"` for a system or dataset
+
+**Citation-as-noun style** — when referring to other authors as the subject of a sentence, use `Author~\etalcite{#}` form, not a bare citation number and not passive voice:
   ```
   ❌ "[3] proposes..."              ← citation number as subject
-  ❌ "[3] propose..."               ← still wrong; authors should be named
   ❌ "is proposed by [3]"           ← passive voice that erases the authors
   ✅ "Lim~\etalcite{lim2023} propose..."   ← author named, verb plural
   ```
-  Also check that the verb is **plural** after `Author et al.` — "et al." implies multiple people:
-  ```
-  ❌ "Lim et al. proposes..."   ← singular verb; wrong
-  ✅ "Lim et al. propose..."    ← plural verb; correct
-  ```
+
+**Circular descriptions:**
+- A module described only by restating its name or function (e.g., "The feature extraction module extracts features") — flag and suggest a description of *how* or *why*
 
 ---
 
