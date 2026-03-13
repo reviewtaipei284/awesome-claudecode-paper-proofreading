@@ -35,6 +35,8 @@ Do this silently before producing any output. The review must cover the **full p
   - ❌ `"Our method — which is fast — achieves..."` → ✅ `"Our method, which is fast, achieves..."`
   - ❌ `"The result is clear — we outperform all baselines."` → ✅ `"The result is clear: we outperform all baselines."`
 
+> **Phase 1 — Em-dash detection (Category A):** During detection, flag every em dash (`—`) in the manuscript as STYLE. Em dashes in academic writing are a known signal of AI-generated text and should be replaced with a comma, colon, semicolon, or restructured sentence. Flag each occurrence with its location and a suggested alternative.
+
 ---
 
 ## Active Review Categories
@@ -340,12 +342,9 @@ Check that the abstract follows the WHY → PROBLEM → HOW → RESULTS structur
 - **WHY** (1–2 sentences): answers "why is this relevant? why should I care?" — sets the motivation without deep technical detail
 - **PROBLEM** (1 sentence): clearly states the specific problem the paper addresses, starting with something like "In this paper, we address the problem of..."
 - **HOW & WHAT** (~3 sentences): how the problem is approached in general, what is new, what makes the contribution special
-- **RESULTS** (1 sentence): quantified result or key outcome, not a vague claim
+- **RESULTS** (1 sentence): key outcome or result of the work
 
 Additional checks:
-- **Quantified RESULTS** — the RESULTS sentence must include a specific metric or number (e.g., `"achieves 12% lower ATE on TUM RGB-D"`). A vague claim such as `"improved map quality"` or `"better performance"` with no number is insufficient; flag as MAJOR:
-  - ❌ `"our method achieves improved map quality"` — no metric, no number
-  - ✅ `"our method reduces ATE by 15% over the best uncalibrated baseline on TUM RGB-D"`
 - **Acronyms must be expanded in the abstract** — every acronym used in the abstract must be defined within the abstract itself, even if it is commonly known in the field. Do NOT rely on definitions from the body text. Flag first use of any unexpanded acronym as MINOR:
   - ❌ `"simultaneous localization and mapping is key"` then later `"SLAM"` without expansion
   - ❌ `"SLAM"` used without ever writing `"simultaneous localization and mapping (SLAM)"`
