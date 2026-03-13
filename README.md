@@ -23,9 +23,9 @@ ______________________________________________________________________
 
 These prompts are distilled from years of hands-on paper reviewing and mentoring experience by **[Hyungtae Lim](https://github.com/LimHyungTae)**, a researcher in robotics and 3D perception.
 
-- 📝 **Associate Editor**, IEEE Robotics and Automation Letters (RA-L)
-- 🌟 **RSS Pioneer 2024**
-- 🎖️ **ICRA 2025 Outstanding Reviewer** — selected from 7,400+ reviewers
+- 📝 **[Associate Editor](https://www.ieee-ras.org/publications/ra-l/editorial-board/)**, IEEE Robotics and Automation Letters (RA-L)
+- 🌟 **[RSS Pioneer 2024](https://sites.google.com/view/rsspioneers2024/participants)**
+- 🎖️ **[ICRA 2025 Outstanding Reviewer](https://2025.ieee-icra.org/program/awards-and-finalists/#outstandingreviewer)** — selected from 7,400+ reviewers
 - 📄 **Conducted 100+ paper reviews** across top robotics and CV venues
 
 The review rules in these prompts reflect the standards expected at top robotics and computer vision venues, refined through real paper reviews and publications across ICRA, IROS, RSS, CVPR, ICCV, NeurIPS, AAAI, RA-L, T-RO, IJRR, T-PAMI, T-IV, etc.
