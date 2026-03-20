@@ -1,4 +1,13 @@
-# Paper Proofreading Prompt for Claude Code
+# Paper Proofreading Prompt for Claude Code and Codex
+
+## Compatibility
+
+This file is designed to work in either environment:
+
+- attach or reference it directly in a Claude Code or Codex session
+- copy or merge it into a paper workspace's `AGENTS.md` or equivalent Codex workspace instructions
+
+Keep the review rules unchanged when reusing this file so the two-phase workflow stays intact.
 
 ## Persona
 
